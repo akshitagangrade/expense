@@ -5,15 +5,25 @@ class ProfileController {
     def index() {
         if(!session.loggedInUser){
             redirect(controller: "login" , action: "index")
+            return
         }
         Person usr=Person.findById(session.loggedInUser)
         [userData : usr]
     }
 
     def edit() {
-        [editing: Person.get(session.loggedInUser)]
+        if(!session.loggedInUser) {
+            redirect(controller: "login", action: "index")
+            return
+        }
+            [editing: Person.get(session.loggedInUser)]
+
     }
     def update() {
+        if(!session.loggedInUser) {
+            redirect(controller: "login", action: "index")
+            return
+        }
         println "recieved paramenter to update  ${params}"
         Person updateValue = Person.get(params.id)
         println ">>>>>" + updateValue
