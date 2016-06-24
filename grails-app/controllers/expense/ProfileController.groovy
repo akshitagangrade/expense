@@ -2,28 +2,21 @@ package expense
 
 class ProfileController {
 
-    def index() {
+    def beforeInterceptor = {
         if(!session.loggedInUser){
             redirect(controller: "login" , action: "index")
-            return
+            return false
         }
+    }
+    def index() {
         Person usr=Person.findById(session.loggedInUser)
         [userData : usr]
     }
 
     def edit() {
-        if(!session.loggedInUser) {
-            redirect(controller: "login", action: "index")
-            return
-        }
             [editing: Person.get(session.loggedInUser)]
-
     }
     def update() {
-        if(!session.loggedInUser) {
-            redirect(controller: "login", action: "index")
-            return
-        }
         println "recieved paramenter to update  ${params}"
         Person updateValue = Person.get(params.id)
         println ">>>>>" + updateValue
