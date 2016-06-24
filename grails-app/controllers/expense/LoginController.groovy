@@ -8,12 +8,13 @@ class LoginController {
         Person sc
         if(params.email && params.password) {
             sc = Person.findByEmailAndPassword("${params.email}", "${params.password}")
-            println "====>>>> ${sc.firstName} "
+
             if(sc) {
                 session.loggedInUser = sc.id
                 redirect(controller: "Profile", action: "index" )
                 println "===>>> ${session.loggedInUser}"
             } else {
+                flash.message="Invalid user id or password"
                 redirect( action: "index")
             }
         }

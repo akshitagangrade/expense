@@ -21,6 +21,15 @@
                 </ul>
             </div>
         </nav>
+        <div class="container-fluid">
+            <g:pageProperty name="page.pagename"/>
+        </div>
+        <div class="container-fluid">
+            <g:pageProperty name="page.title"/>
+        </div>
+        <div class="container-fluid">
+            <g:pageProperty name="page.body"/>
+        </div>
     </div>
     <g:layoutBody/>
 

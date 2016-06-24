@@ -21,6 +21,7 @@ class ProfileController {
         updateValue.lastName = params.lastName
         updateValue.email = params.email
         updateValue.save(flush: true)
+        flash.message= "updated successfully"
         redirect(action: 'index')
     }
 }

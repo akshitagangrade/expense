@@ -13,9 +13,11 @@ class RegisterController {
         sc.save()
 
         if (sc.hasErrors()) {
+
             render(view: 'index', model: [myUser: sc])
             return
         }
+        flash.message = "Dear ${sc.firstName} ${sc.lastName},, Successfull login!!!!"
         render(view: 'save', model: [register: sc])
 
     }
