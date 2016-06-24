@@ -2,13 +2,14 @@ package expense
 
 class ProfileController {
 
-    def beforeInterceptor = {
+    /*def beforeInterceptor = {
         if(!session.loggedInUser){
             redirect(controller: "login" , action: "index")
             return false
         }
-    }
+    }*/
     def index() {
+
         Person usr=Person.findById(session.loggedInUser)
         [userData : usr]
     }

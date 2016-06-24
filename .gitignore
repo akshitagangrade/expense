@@ -1,0 +1,12 @@
+target
+./idea.h
+wrapper/
+.project
+.classpath
+grailsw
+grailsw.bat
+.idea/
+*.iml
+test/
+*.log
+.asscache
